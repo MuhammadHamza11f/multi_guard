@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-// use GuzzleHttp\Psr7\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
@@ -43,17 +42,17 @@ class LoginController extends Controller
 
     public function showAdminLoginForm()
     {
-        return view('auth.login',['url' => route('admin.login-view'),'title'=>'Admin']);
+        return view('auth.login', ['route' => route('admin.login-view'), 'title'=>'Admin']);
     }
 
     public function adminLogin(Request $request)
     {
         $this->validate($request, [
             'email'   => 'required|email',
-            'password' => 'required|min:8'
+            'password' => 'required|min:6'
         ]);
 
-        if (\Auth::guard('admin')->attempt($request->only(['email','password']), $request->get('remember'))){
+        if (\Auth::guard('admin')->attempt($request->only('email','password'), $request->get('remember'))){
             return redirect()->intended('/admin/dashboard');
         }
 

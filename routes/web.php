@@ -1,10 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\EmailController;
-use App\Http\Controllers\SendMailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,10 +8,14 @@ use App\Http\Controllers\SendMailController;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
 |
 */
+
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\SendMailController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -34,19 +34,4 @@ Route::get('/admin/dashboard',function(){
     return view('admin');
 })->middleware('auth:admin');
 
-// Route::get('send/mail', [SendMailController::class, 'send_mail'])->name('send_mail');
-
-// Route::get('send-mail', function () {
-
-//     $details = [
-//         'title' => 'Mail from MuhammadHamza0611.com',
-//         'body' => 'This is for testing email using smtp'
-//     ];
-
-//     \Mail::to('hjutt628@gmail.com')->send(new \App\Mail\MyTestMail($details));
-
-//     dd("Email is Sent.");
-// });
-
-Route::get('/send-email', [EmailController::class, 'index'])->name('index');
-Route::get('send/bulkEmail', [SendMailController::class, 'send_mail'])->name('send_mail');
+Route::get('send/mail', [SendMailController::class, 'send_mail'])->name('send_mail');

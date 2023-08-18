@@ -76,7 +76,7 @@ class RegisterController extends Controller
 
     public function showAdminRegisterForm()
     {
-        return view('auth.register', ['route' => route('admin.register-view'), 'title'=>'Admin']);
+        return view('auth.register', ['route' => route('admin.register-view'),'title'=>'Admin']);
     }
 
     protected function createAdmin(Request $request)

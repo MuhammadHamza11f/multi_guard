@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('content')
@@ -14,7 +13,7 @@
                     @else
                         <form method="POST" action="{{ route('login') }}">
                     @endisset
-
+                    
                         @csrf
 
                         <div class="row mb-3">

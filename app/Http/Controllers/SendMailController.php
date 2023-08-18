@@ -16,6 +16,6 @@ class SendMailController extends Controller
             	->delay(now()->addSeconds(2));
 
         dispatch($job);
-        echo "Mail send successfully !!";
+        echo "Mail Has been send successfully !!";
     }
 }

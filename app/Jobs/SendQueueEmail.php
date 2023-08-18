@@ -34,13 +34,12 @@ class SendQueueEmail implements ShouldQueue
     public function handle()
     {
         $data = User::all();
-        echo($data);
         $input['subject'] = $this->details['subject'];
 
         foreach ($data as $key => $value) {
             $input['email'] = $value->email;
             $input['name'] = $value->name;
-            \Mail::send('mail.mail', [], function($message) use($input){
+            \Mail::send('mail.testMail', [], function($message) use($input){
                 $message->to($input['email'], $input['name'])
                     ->subject($input['subject']);
             });
