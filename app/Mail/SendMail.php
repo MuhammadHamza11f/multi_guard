@@ -31,6 +31,6 @@ class SendMail extends Mailable
     public function build()
     {
         return $this->subject('Email From muhammad.hamza@ikonicsolution.com')
-                    ->view('mail.mail');
+                    ->view('mail.testMail');
     }
 }

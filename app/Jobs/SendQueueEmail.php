@@ -34,6 +34,7 @@ class SendQueueEmail implements ShouldQueue
     public function handle()
     {
         $data = User::all();
+        echo($data);
         $input['subject'] = $this->details['subject'];
 
         foreach ($data as $key => $value) {

@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\SendMailController;
 
 Route::get('/', function () {
@@ -34,4 +35,5 @@ Route::get('/admin/dashboard',function(){
     return view('admin');
 })->middleware('auth:admin');
 
-Route::get('send/mail', [SendMailController::class, 'send_mail'])->name('send_mail');
+Route::get('send/mail', [EmailController::class, 'index'])->name('index');
+Route::get('send/bulkEmail', [SendMailController::class, 'send_mail'])->name('send_mail');
